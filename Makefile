@@ -1,13 +1,14 @@
-CFLAGS=-I. -Wall -g
-OUTPUT=day1p1 day1p2 day4p1
+CFLAGS=-Isrc/ -Wall -g
+OUTPUT=day/*
 
 default:
 	@echo "Please run make day<n>"
 
-%: %.c
+day/%: src/day%.c
+	@mkdir -p day/
 	$(CC) $(CFLAGS) $^ -o $@
 
-day4p1: day4p1.c hashmap.c
+day/4p1: src/day4p1.c src/hashmap.c
 
 .PHONY: clean
 clean:
